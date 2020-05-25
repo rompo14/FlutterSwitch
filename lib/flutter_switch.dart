@@ -89,7 +89,7 @@ class _FlutterSwitchState extends State<FlutterSwitch>
                   ? widget.inactiveColor
                   : widget.activeColor
               : widget.disabledColor,
-              border: Border.all(width: 1, color: !widget.disabled ? widget.borderColor ? widget.disabledColor)
+              border: Border.all(width: 1, color: !widget.disabled ? widget.borderColor : widget.disabledColor)
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
