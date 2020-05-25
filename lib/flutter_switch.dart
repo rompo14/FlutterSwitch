@@ -12,6 +12,7 @@ class FlutterSwitch extends StatefulWidget {
       toggleColor;
   final double width, height, toggleSize, valueFontSize, borderRadius, padding;
   final List<BoxShadow> boxShadow;
+  final Color borderColor;
 
   const FlutterSwitch({
     Key key,
@@ -29,7 +30,8 @@ class FlutterSwitch extends StatefulWidget {
     this.borderRadius = 20.0,
     this.padding = 4.0,
     this.showOnOff = false,
-    this.boxShadow
+    this.boxShadow,
+    this.borderColor = const Color(0xFFF4F4F4)
   }) : super(key: key);
 
   @override
@@ -81,6 +83,7 @@ class _FlutterSwitchState extends State<FlutterSwitch>
               color: _toggleAnimation.value == Alignment.centerLeft
                   ? widget.inactiveColor
                   : widget.activeColor,
+              border: Border.all(width: 1, color: borderColor)
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
