@@ -87,8 +87,8 @@ class _FlutterSwitchState extends State<FlutterSwitch>
               color: !widget.disabled 
               ? _toggleAnimation.value == Alignment.centerLeft
                   ? widget.inactiveColor
-                  : widget.activeColor,
-              : widget.disabledColor
+                  : widget.activeColor
+              : widget.disabledColor,
               border: Border.all(width: 1, color: !widget.disabled ? widget.borderColor ? widget.disabledColor)
             ),
             child: Row(
