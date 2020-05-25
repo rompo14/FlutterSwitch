@@ -11,6 +11,7 @@ class FlutterSwitch extends StatefulWidget {
       inactiveTextColor,
       toggleColor;
   final double width, height, toggleSize, valueFontSize, borderRadius, padding;
+  final List<BoxShadow> boxShadow;
 
   const FlutterSwitch({
     Key key,
@@ -28,6 +29,7 @@ class FlutterSwitch extends StatefulWidget {
     this.borderRadius = 20.0,
     this.padding = 4.0,
     this.showOnOff = false,
+    this.boxShadow
   }) : super(key: key);
 
   @override
@@ -106,6 +108,10 @@ class _FlutterSwitchState extends State<FlutterSwitch>
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: widget.toggleColor,
+                      boxShadow: widget?.boxShadow ?? [
+                        BoxShadow(color: Colors.black.withOpacity(.06), offset: Offset(0, 3), blurRadius: 1),
+                        BoxShadow(color: Colors.black.withOpacity(.15), offset: Offset(0, 3), blurRadius: 8),
+                      ]
                     ),
                   ),
                 ),
