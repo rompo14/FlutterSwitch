@@ -83,7 +83,7 @@ class _FlutterSwitchState extends State<FlutterSwitch>
               color: _toggleAnimation.value == Alignment.centerLeft
                   ? widget.inactiveColor
                   : widget.activeColor,
-              border: Border.all(width: 1, color: borderColor)
+              border: Border.all(width: 1, color: widget.borderColor)
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
