@@ -9,10 +9,12 @@ class FlutterSwitch extends StatefulWidget {
       inactiveColor,
       activeTextColor,
       inactiveTextColor,
+      disabledColor,
       toggleColor;
   final double width, height, toggleSize, valueFontSize, borderRadius, padding;
   final List<BoxShadow> boxShadow;
   final Color borderColor;
+  final bool disabled;
 
   const FlutterSwitch({
     Key key,
@@ -31,7 +33,9 @@ class FlutterSwitch extends StatefulWidget {
     this.padding = 4.0,
     this.showOnOff = false,
     this.boxShadow,
-    this.borderColor = const Color(0xFFF4F4F4)
+    this.borderColor = const Color(0xFFF4F4F4),
+    this.disabledColor = const Color(0xFFEBF3FE),
+    this.disabled = false
   }) : super(key: key);
 
   @override
@@ -64,7 +68,7 @@ class _FlutterSwitchState extends State<FlutterSwitch>
       animation: _animationController,
       builder: (context, child) {
         return GestureDetector(
-          onTap: () {
+          onTap: !widget.disabled ? () {
             if (_animationController.isCompleted) {
               _animationController.reverse();
             } else {
@@ -73,17 +77,19 @@ class _FlutterSwitchState extends State<FlutterSwitch>
             widget.value == false
                 ? widget.onToggle(true)
                 : widget.onToggle(false);
-          },
+          } : null,
           child: Container(
             width: widget.width,
             height: widget.height,
             padding: EdgeInsets.all(widget.padding),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(widget.borderRadius),
-              color: _toggleAnimation.value == Alignment.centerLeft
+              color: !widget.disabled 
+              ? _toggleAnimation.value == Alignment.centerLeft
                   ? widget.inactiveColor
                   : widget.activeColor,
-              border: Border.all(width: 1, color: widget.borderColor)
+              : widget.disabledColor
+              border: Border.all(width: 1, color: !widget.disabled ? widget.borderColor ? widget.disabledColor)
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
